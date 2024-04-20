@@ -2,36 +2,6 @@
 
 ## Bloque 1: Exploración de contenidos web
 
-### Despliegue de máquinas virtuales con Docker
-Primero prepare y luego build para levantar la estructura de cada lab
-```sh
-docker ps
-```
-Muestra todos los contenedores en ejecución
-```sh
-docker ps
-```
-Muestra todos los contenedores
-```sh
-docker ps -aq
-```
-Muestra los ids de todos los contenedores
-
-```sh
-docker rm
-```
-Borra todos los contenedores
-
-```sh
-docker stop [ID+]
-```
-Para los contenedores
-
-```sh
-docker stop $(docker ps -aq)
-```
-Para todos los contenedores
-
 ### Metadatos de documentos
 ```sh
 exiftool <FILENAME>
@@ -84,3 +54,34 @@ Para enumerar los Hosts vivos de la red local
 ### Have I been pwnd?
 https://haveibeenpwned.com/ 
 Permite consultar fugas de datos de usuarios.
+
+## ANEXO: Manejo de Docker
+
+Primero prepare y luego build para levantar la estructura de cada lab
+```sh
+docker ps
+```
+Muestra todos los contenedores en ejecución
+```sh
+docker ps
+```
+Muestra todos los contenedores
+```sh
+docker ps -aq
+```
+Muestra los ids de todos los contenedores
+
+```sh
+docker rm
+```
+Borra todos los contenedores
+
+```sh
+docker stop [ID+]
+```
+Para los contenedores
+
+```sh
+docker stop $(docker ps -aq)
+```
+Para todos los contenedores
