@@ -97,3 +97,34 @@ Para hacer un port scan a puertos específicos
 ```sh
 sudo nmap -PS<port1, port2...> <IP>
 ```
+
+## Bloque 3: Operaciones básicas de seguridad adicionales
+
+### Poner una contraseña adecuada
+Podemos cambiar la contraseña de nuestra cuenta con
+```sh
+passwd
+```
+
+### Habilitar el software de escaneo de malware / rootkits
+- Rootkits: chkrootkit y rkhunter 
+- Malware: ClamAV
+
+### Informes de Lynis
+
+Para generar un informe en HTML (Se necesita instalar el paquete kbtin)
+```sh
+sudo lynis audit system | ansi2html > report.html
+```
+
+### El servicio Virustotal
+https://www.virustotal.com/gui/home/url
+
+### Google Safe Browsing
+https://transparencyreport.google.com/safe-browsing/search
+
+### Comprobación de vulnerabilidades conocidas de productos mediante encabezados HTTP
+En el navegador: Inspeccionar > Media > Headers
+
+### Usar un DNS seguro para tu protección: NextDNS
+https://nextdns.io/
