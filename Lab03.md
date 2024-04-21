@@ -38,6 +38,7 @@ Para desencriptar:
 ```sh
 openssl aes-128-ecb -d -in xd.file -k password
 ```
+
 ## Probar los modos de cifrado ECB y CBC del algoritmo simétrico robusto de cifrado AES
 Vamos a cifrar una imágen mediante el algoritmo ECB y el CBC. En primer lugar pasamos la foto a mapa de píxeles (.ppm). Para ello instalamos la siguiente librería:
 ```sh
@@ -91,15 +92,52 @@ sudo umount <tu ruta de carpeta>
 
 ## Bloque 3. Introducción al cracking de contraseñas sin conexión
 
+### John the Ripper para romper OpenSSL
+
 Instalamos John The Ripper
 ```sh
 sudo apt install john
 ```
+Encriptamos un archivo para probar a desencriptarlo
+```sh
+openssl enc -aes-128-cbc -in <input> -out <output>
+```
 
+Lo pasamos a formato john
+```sh
+openssl2john -c 1 <output>
+```
 
+Lo tratamos de desencriptar
+```sh
 
-### John the Ripper para romper OpenSSL
+```
 
+### John the Ripper + contraseñas de usuario + generador de listas de palabras crunch
+
+Con la herramienta unshadow combinamos el archivo passwd con shadow
+```sh
+sudo unshadow /etc/passwd /etc/shadow > unshadow.txt
+```
+
+Generamos un diccionario de palabras con crunch. En este caso sabemos que la contraseña de un usuario empieza por "test", acaba con "..." y tiene tres números en medio. 
+- %: Cualquier número
+- @: Cualquier caracter
+```sh
+crunch 10 10 -t test%%%...  -o passwords.txt
+```
+
+Y por último, le pasamos el diccionario al john y el unshadow
+```sh
+john --wordlist=passwords.txt unshadow.txt
+```
+
+### "Fuerza bruta pura" con John the Ripper
+
+Si queremos probar con todas las combinaciones de caracteres
+```sh
+john --incremental --users=<user1,user2...> --max-length=n shadow.txt
+```
 
 ## ANEXO: Compartir archivos entre máquinas del lab
 Podemos transportar archivos de una máquina a otra con el siguiente comando
