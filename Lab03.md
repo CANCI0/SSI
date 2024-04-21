@@ -103,14 +103,14 @@ Encriptamos un archivo para probar a desencriptarlo
 openssl enc -aes-128-cbc -in <input> -out <output>
 ```
 
-Lo pasamos a formato john
+Lo pasamos a formato john (-c 1 -> aes-128-cbc)
 ```sh
 openssl2john -c 1 <output>
 ```
 
 Lo tratamos de desencriptar
 ```sh
-
+john --wordlist=rockyou.txt hash.txt
 ```
 
 ### John the Ripper + contraseñas de usuario + generador de listas de palabras crunch
