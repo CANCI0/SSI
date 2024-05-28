@@ -1,6 +1,6 @@
 # Laboratorio 10. Defendiendo aplicaciones web
 
-## Bloque 1: Instalación de un rpoxy inverso
+## Bloque 1: Instalación de un proxy inverso
 
 ### Apache 2 instalado como un proxy inverso
 
@@ -18,13 +18,13 @@ Añadimos las rutas y los servidores a los que queremos redirigir (/etc/apache2/
 <VirtualHost *:80>
     ...
     <Location “/eii>”>
-    ProxyPass “http://http://192.168.10.2/”
-    ProxyPassReverse “http://http://192.168.10.2/”
+      ProxyPass “http://http://192.168.10.2/”
+      ProxyPassReverse “http://http://192.168.10.2/”
     </Location>
 
     <Location “/epi>”>
-    ProxyPass “http://http://192.168.10.3/”
-    ProxyPassReverse “http://http://192.168.10.3/”
+      ProxyPass “http://http://192.168.10.3/”
+      ProxyPassReverse “http://http://192.168.10.3/”
     </Location>
 </VirtualHost>
 ```

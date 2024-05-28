@@ -105,7 +105,7 @@ openssl enc -aes-128-cbc -in <input> -out <output>
 
 Lo pasamos a formato john (-c 1 -> aes-128-cbc)
 ```sh
-openssl2john -c 1 <output>
+openssl2john -c 1 -m 2 <output>
 ```
 
 Lo tratamos de desencriptar
@@ -145,7 +145,7 @@ Podemos transportar archivos de una máquina a otra con el siguiente comando
 scp ssiuser@192.168.3.2:~/Images/foto.png .
 ```
 
-Si nos metemos en el directorio volume_data veremos una carpeta por cada máquina. Si mtemos un archivo ahí se mete en la carpeta /shared de la máquina.
+Si nos metemos en el directorio volume_data veremos una carpeta por cada máquina. Si metemos un archivo ahí se mete en la carpeta /shared de la máquina.
 
 En /etc/passwd se almacenan todos los usuarios del sistema
 ```sh

@@ -70,6 +70,12 @@ sudo fail2ban stop
 sudo fail2ban status
 ```
 
+Algunas opciones son bantime, findtime y maxretry. Ponemos enabled = true para habilitar una jail. Hay que editar siempre jail.local, no jail.conf
+
+Para desbanear IPs
+```sh
+fail2ban-client set <nombre de la jail> unbanip <ip>
+```
 ### Protección de intentos de escaneo: PortSentry como honeypot
 
 ## Bloque 3: Detección de intrusiones
@@ -85,12 +91,3 @@ sudo python3 sensor.py
 ```
 
 ### Wazuh y ataques de red
-
-## Bloque 4: Etremando la seguridad en las conexiones VPNs
-
-### Uso de VPNs tradicionales comerciales: ProtonVPN
-https://protonvpn.com/es-es
-
-### Instalar y probar ToR Browser
-
-### Uso de VPNs P2P: ZeroTier
