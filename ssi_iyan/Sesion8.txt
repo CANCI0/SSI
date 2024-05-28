@@ -1,0 +1,20 @@
+Hacer siempre los ataques de nmap con sudo
+sudo nano /etc/hosts
+192.168.8.1	ejemplo1
+(cada vez que hagas un ping a ejemplo1 lo hace a esa ip para no tener que recordarla
+sudo nmap ejemplo1
+
+en nmap los puertos pueden estar
+open-closed-filtered-open|filtered(no fue capaz de saberlo)
+
+Ejercicio L89B1_NMAPSTART: Una simple “puesta en marcha”
+sudo nmap 192.168.8.1-100 escanea el rango de IPs y te da las IP y sus puertos abiertos
+
+Ahora meto todas las IP en el archivo /etc/hosts para darles un nombre
+
+
+
+Para ver el SO: nmap -A -T4 <IP objetivo>
+
+Deteccion de versiones: nmap -sV <IP objetivo>
+

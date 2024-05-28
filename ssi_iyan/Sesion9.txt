@@ -1,0 +1,42 @@
+sudo apt install plocate
+sudo updatedb
+vamos a usar el comando locate para buscar archivos
+locate *.nse (busca todos los scripts de nmap)
+
+sudo nmap --script-help=*ftp*
+
+el script de geolocalizacion no funciona
+
+Ejercicio L89B3_NSE: NMap Scripting Engine (NSE)
+hacer locate *(cadena)*.nse para encontrar los scripts
+
+*Bloque 3: Enumeración con NMap Nv3*
+
+Ejercicio L89B3_INFOGAT: Técnicas de recopilación de información con NSE
+sudo nmap -p22 --script ssh-auth-methods 192.168.8.48
+nmap -p 80 --script dns-brute.nse 192.168.8.48
+nmap -p 80 --script hostmap-bfk.nse 192.168.8.48
+
+Ejercicio L89B3_HTTPINFOGAT: Recopilación de información HTTP con NSE
+sudo nmap -p80 -script http-methods 192.168.8.34
+nmap --script banner 192.168.8.48
+nmap --script http-enum --script-args http-enum.basepath'pub/' 192.168.8.48
+nmap --script http-title -sV -p 80 192.168.8.48
+nmap --script whois-ip <URL o IP de destino>
+nmap --script whois-ip –script-args whois.whodb-arin+ripe+afrinic <target IP>
+
+Ejercicio L89B3_MALCVE: Detección de malware y vulnerabilidades con NSE
+nmap -p80 --script http-google-malware --script-args http-google-malware.api-<API key> <IP o dirección del objetivo> (no se hace porque pide api key)
+nmap -sV --script http-malware-host <URL o IP del objetivo>
+nmap -Pn --script vuln 192.168.8.48 > salidavuln.txt
+
+Para utilizar cualquier script de terceros, debes seguir este procedimiento:
+• Descargar la carpeta o el archivo .nse del script en la carpeta de scripts NSE
+(/usr/share/nmap/scripts). En nuestro caso concreto sería hacer git clone
+https://github.com/vulnersCom/nmap-vulners.git una vez estemos en dicha carpeta.
+• Actualizar la base de datos de scripts nmap con nmap --script-updatedb
+Una vez hecho esto, puedes ejecutar el script como cualquier script estándar que ya hemos visto. Para el
+caso que nos ocupa, simplemente hay que hacer sudo nmap -sV --script=nmap-vulners/ <ip>
+
+
+*Bloque 4. Más allá de NMap. Otras técnicas de enumeración*

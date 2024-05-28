@@ -1,0 +1,22 @@
+Hacer en prácticamente todos los labs:
+cd Desktop/
+cd ssi_labs/
+ls -al
+cd lab_sessions/
+ls -al
+entrar en el lab que toca
+hay 2 scripts: uno para preparar la infraestructura en funcion de otros contenedores ya creados que estan en la carpeta images y otro para levantar la infraestructura creada
+source prepare....
+source build....
+para finalizar todos los procesos, ctrl+c
+
+abrimos otra terminal, esa la dejamos ahí
+docker rm -> borra todos los contenedores
+docker stop (id) -> para el contenedor con ese id
+docker ps  -> muestra todos los contenedores activos
+docker ps -a -> muestra todos los contenedores
+docker ps -aq -> muestra el id de todos los contenedores 
+docker stop $(docker ps -aq) -> para todos los contenedores
+
+script llamado enter.... -> se usa para entrar
+source enter.... -> entramos en la infraestructura creada 

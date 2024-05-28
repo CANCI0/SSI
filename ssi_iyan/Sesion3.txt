@@ -1,0 +1,76 @@
+2 sesiones de criptografía -> siempre cae algo en el examen
+
+cp origen destino -> copia de origen a destino
+
+cp ~/Images/foto.png . 
+"   "   "    "       ..
+"   "   "    "       /home/
+
+COMPARTIR INFO ENTRE CONTENEDORES (nosotros usaremos la opcion 2)
+
+OPCION 1
+scp es igual que cp pero en local
+
+scp ssiuser@192.168.3.2:~/Images/foto.png . -> equivalente a descargar
+
+scp Images/foto.png ssiuser@192.168.3.2/home/ssiuser/ -> equivalente a subir una foto
+
+OPCION 2
+descargamos una imagen en la carpeta volume_data
+cd volume_data/
+ls
+cp kali/Foto.png ubuntu/
+
+ls ubuntu/
+
+cd ..
+
+source enter ubuntu noseque
+
+ls /shared/ -> ahi está la foto
+
+
+
+
+las contraseñas están en /etc/shadow (solo se puede leer con sudo)
+aparece $..$..$SAL/hash de la contraseña:......
+$y$ indica el tipo de algoritmo usado para calcular la hash
+$j9T$ -> parametro de no se que
+SAL secuencia aleatoria de caracteres
+
+
+EJERCICIOS: 
+Ocultar info en una foto: steghide embed -cf imagen.jpg -ef hola.txt
+
+
+encriptar archivo: openssl enc -aes-128-ecb -in archivo.txt -out archivo_cifrado.enc
+desencriptarlo: openssl enc -d -aes-128-ecb -d -in archivo_cifrado.enc -out archivo_descifrado.txt
+
+
+convertir una imagen a ppm y separar cabecera y cuerpo:
+convert image.png image.ppm
+head -n 3 image.ppm > cabecera.txt
+tail -n +4 image.ppm > cuerpo.bin
+
+unirla: cat cabecera.txt <fichero con el cuerpo cifrado> > <nombre de la unión>.ppm
+
+gimp imagenunida.ppm -> la abre
+
+Aún cifrando el cuerpo, se intuyen las líneas del dibujo, lo cual puede llevar a filtraciones de datos
+
+encriptar el cuerpo con un vector de inicialización generado:
+generar el vector -> openssl rand -hex 16 y pegarlo al final del siguiente comando
+openssl enc -aes-128-cbc -e -in cuerpo.bin -out cuerpocifrado.enc -iv 772d117623d77dad384c69c9559cc141
+
+Ahora no se intuyen las lineas del dibujo
+
+EJERCICIO L3B2:
+crear carpeta en home
+sudo mount -t ecryptfs ../lab_03_ejL3B2/ ../lab_03_ejL3B2/
+hacerlo con passphrase
+
+
+
+
+
+

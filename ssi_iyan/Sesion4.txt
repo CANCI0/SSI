@@ -1,0 +1,71 @@
+segunda sesión de criptografía
+ALGO DE CRIPTOGRAFÍA cae fijo en el examen (cifrado simetrico o asimetrico)
+generar SSH sin contraseña ha caido otros años
+
+cifrado asimétrico
+
+
+ejL4B1 keypair
+openssl genrsa -out nombre.key 4096
+
+copiar la public key a un fichero aparte
+openssl rsa -in nombre_key.key -pubout -out fichero.key
+
+listar curvas
+openssl ecparam -list_­curves
+
+Create private key using the P-224 elliptic curve
+openssl ecparam -name secp224k1 -genkey -out ecpriv.key
+
+
+EJERCICIO DE ENVIAR ARCHIVOS Y DESENCRIPTAR
+hazle llegar a U la clave correcta de K que permita a U enviar mensajes que solo K pueda
+descifrar
+1- generas par de claves en kali y ubuntu,  y sacas las publicas a un fichero aparte
+2- le pasas la public key de kali a ubuntu mediante:
+	cp kali_public.key /shared/
+3- pasas la clave a ubuntu mediante 
+	cp /shared/kali_public.key . 
+4- en ubuntu, encriptas un txt usando la clave publica de kali, mediante
+	openssl rsautl -encrypt -inkey kali_public.key -pubin -in hola.txt -out hola_encriptado.txt
+5- envias el fichero encriptado a kali mediante
+	cp hola_encriptado.txt /shared/
+6- en kali,
+	cp /shared/hola_encriptado.txt .
+7- desencriptas el fichero con la private key de kali (usamos pkeyutl porque rsautl esta deprecated)
+	openssl pkeyutl -decrypt -inkey kali_key.key -in hola_encriptado.txt -out hola_desencriptado.txt
+
+
+EJ L4B2 - Generar contraseñas
+
+openssl enc -pbkdf2 -aes-128-ecb -k <clave en texto inicial> -P > clave.priv (la mete en un fichero)
+
+encriptar el mensaje
+openssl enc -aes-128-ecb -in mensaje.txt -out mensajeenc.enc -pass file:./clave.priv
+
+desencriptarlo 
+openssl enc -d -aes-128-ecb -in mensajeenc.enc -out mensajedesenc.txt -pass file:./clave.priv
+
+EJl4b3
+
+descargas un pdf de mas de un mb
+lo cifras con la clave del ej anterior
+	openssl enc -aes-128-ecb -in PPT.pdf -out pdfenc.enc -pass file:./clave.priv
+cifras la clave.priv con la publica de kali (desde ubuntu)
+	openssl rsautl -encrypt -inkey kali_public.key -pubin -in clave.priv -out clavepriv.enc
+enviar clave encriptada y pdf encriptado a kali
+	cp clavepriv.enc /shared/
+	cp pdfenc.enc /shared/
+(en kali) coger los ficheros
+	cp /shared/clavepriv.enc .
+	cp /shared/pdfenc.enc .
+(en kali) desencriptar la clave con la private key de kali
+	openssl pkeyutl -decrypt -inkey kali_key.key -in clavepriv.enc -out clavedesenc.priv
+(en kali) desencriptar el pdf con la clave
+	openssl enc -aes-128-ecb -in pdfenc.enc -out pdfdesenc.pdf -pass file:./clavedesenc.priv
+
+quedan por hacer bloques 3 y 4
+	
+
+
+	

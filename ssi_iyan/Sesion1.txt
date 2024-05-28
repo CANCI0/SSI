@@ -1,0 +1,20 @@
+cualquier instruccion es un programa ejecutable y está en /BIN, incluido el shell
+/BOOT -> ficheros estáticos, con info acerca del arranque del sistema
+/ETC -> cualquier servicio importante que este siendo ejecutado en segundo plano (como un demonio) hay una carpeta para cada servicio que se esta ejecutando
+para modificar el comportamiento de un servicio modificamos /ETC/Carpeta del servicio
+
+/LOG -> misma estructura que el /ETC. Si hay un error, tengo que ir al Log de apache
+
+/HOME -> directorios de los usuarios con sus permisos -> /Home/uoxxxxx
+
+
+
+sudo usermod -a uo288231 -G sudo añade al usuario uo288231 al grupo sudo (ejecutar desde vagrant)
+manual -> man
+para buscar = /hola
+
+su uo288231 no cambia la carpeta en la que te ubicas
+su - uo288231 te lleva ademas al home del usuario
+
+sudo lynis audit system > lynis_$(date +%d_%m_%y).txt -> genera un fichero llamado lynis_fecha actual, con un informe del sistema, donde veremos el indice de hardening de la máquina
+

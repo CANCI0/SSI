@@ -1,0 +1,54 @@
+EJ1 -> 
+1.1 lynis
+
+1.2 singleuser
+
+# significa que estoy con el usuario root
+sudo grep -Eq '^root:\$[0-9]' /etc/shadow || echo "root is locked"
+
+devuelve root is locked -> root no tiene contraseña
+
+sudo passwd root
+
+el comando de grep esta mal porque no pilla yesscript asi que hay que modificarlo
+sudo grep -Eq '^root:\$[0-9a-z]' /etc/shadow || echo "root is locked"
+ahora está bien
+
+su -> cambiar a root
+
+grep -Eis "(\\\v|\\\r|\\\m|\\\s|$(grep '^ID=' /etc/os-release | cut -d= -f2 | sed -e 's/"//g'))" /etc/motd busca en el motd (message of the day) que es el banner de
+bienvenida si en alguna linea esta la version del SO
+
+**ESTÁ MAL** no tenemos motd, sino motd_script 
+
+
+cat /etc/issue
+grep -E -i "(\\\v|\\\r|\\\m|\\\s|$(grep '^ID=' /etc/os-release | cut -d= -f2 | sed -e 's/"//g'))" /etc/issue
+
+si devuelven resultado -> echo "Authorized uses only. All activity may be monitored and reported." > /etc/issue
+
+
+
+cat /etc/issue.net
+grep -E -i "(\\\v|\\\r|\\\m|\\\s|$(grep '^ID=' /etc/os-release | cut -d= -f2 | sed -e 's/"//g'))" /etc/issue.net
+
+si devuelven resultado -> echo "Authorized uses only. All activity may be monitored and reported." > /etc/issue.net
+
+
+1.3 Seguridad adicional para OPENSSH
+
+copia de seguridad:
+	sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+	sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+
+copiar el script a un archivo script, hacer chmod +x script y ./script
+
+
+1.4 PAM
+
+apt install libpam-pwquality
+editar /etc/security/pwquality.conf y descomentar y editar las lineas minlen=14 y minclass=4
+
+comprobar la salida de grep '^\s*minlen\s*' /etc/security/pwquality.conf
+grep '^\s*minclass\s*' /etc/security/pwquality.conf
+

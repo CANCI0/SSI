@@ -1,0 +1,32 @@
+Credenciales nueva mv -> ssiuser 	test123...
+
+
+dry-run -> no hace nada, pero te da el comando para hacerlo
+
+Ejercicio L6B1_OSCAPUPD
+ejecutar comando
+
+Ejercicio L6B1_OSCAPAUDITSW
+Aplicaciones -> sistema -> scap workbench -> open other content -> seleccionamos la imagen de ubuntu18.04... -> scan -> show report
+
+Ejercicio L6B1_OSCAPAUDITSO
+ejecutar los 3 perfiles que pone con la imagen de ubuntu
+
+Ejercicio L6B1_OSCAPREPORT
+leer los informes
+
+Ejercicio L6B1_OSCAPCMD
+hacer dry run en la gui y sacar el comando de ahi, poniendo sudo delante
+
+Ejercicio L6B2_OSCAPREMWB
+sudo lynis audit system > lynisantes.txt
+hacer dry run y remediate con los 3 perfiles anteriores
+sudo lynis audit system > lynisdespues.txt
+comparar el indice de hardening antes y despues
+
+Ejercicio L6B2_OSCAPREMBASH
+sudo chmod +x archivo
+sudo ./archivo
+despues hacer lo mismo de antes, una auditoria con cada cosa y corregir con cis
+
+Ejercicio L6B2_OSCAPREMANS

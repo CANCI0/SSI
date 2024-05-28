@@ -1,0 +1,36 @@
+antes de empezar:
+añadir al build... la linea xhost + local:root
+
+Ejercicio L7B1_FWZONES
+ejecutar comandos
+options -> runtime to permanent y cambiarlo en el combobox
+comprobar que work tiene activado ssh
+
+Ejercicio L7B1_FWBLOCK
+hacer ifconfig desde la maqina vagrant, y el resultado es esta
+br-ab5171406c7d: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.72.1  netmask 255.255.255.0  broadcast 192.168.72.255
+        inet6 fe80::42:8dff:fe67:29f  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:8d:67:02:9f  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 15  bytes 2496 (2.4 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 
+mueves su zona a public
+haces ifconfig para sacar la ip de la zona
+creas la regla
+pruebas a conectrte
+lo siguiente no lo hice pero creo que es con un ipset
+
+Ejercicio L7B1_FWFORWARD
+La única que encontré yo es esta:
+br-b3ad1e810dbc: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.7.1  netmask 255.255.255.0  broadcast 192.168.7.255
+        inet6 fe80::42:fcff:fee2:1c0a  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:fc:e2:1c:0a  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 13  bytes 2276 (2.2 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+creamos el redireccionamiento
+para ejecutar firefox simplemente hay que poner firexof en la cmd
