@@ -129,7 +129,7 @@ sudo -l
 ### Generar una contraseña válida para un usuario de Linux (T1078. Valid Accounts)
 Podemos generar el hash de una contraseña con mkpasswd
 ```sh
-mkpassw --method=SHA-256
+mkpasswd --method=SHA-256
 ```
 
 Y introducir una entrada en /etc/passwd
