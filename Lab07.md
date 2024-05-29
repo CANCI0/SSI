@@ -24,6 +24,9 @@ sudo firewall-cmd --zone=public --change-interface=enp0s3 --permanent
 ```sh
 sudo firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="192.168.72.15" destination address="192.168.72.1"'
 ```
+```sh
+sudo firewall-cmd --zone=public --add-rich-rule='rule family="ipv4" source address="192.168.72.15" destination address="192.168.72.1" service name="ssh" reject'
+```
 
 ### Reenvío de puertos en firewalld
 ```sh
